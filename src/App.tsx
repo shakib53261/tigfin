@@ -15,7 +15,13 @@ import InvoicesPage from "./components/pages/finance/invoices";
 import InvoiceDetailPage from "./components/pages/finance/invoices/detail";
 import ExpensesPage from "./components/pages/finance/expenses";
 import ExpenseDetailPage from "./components/pages/finance/expenses/detail";
+import BudgetsPage from "./components/pages/finance/budgets";
 import ReportsPage from "./components/pages/finance/reports";
+import ProjectsPage from "./components/pages/projects";
+import ProjectDetailPage from "./components/pages/projects/detail";
+import NewProjectPage from "./components/pages/projects/new";
+import EditProjectPage from "./components/pages/projects/edit";
+import ProjectTasksPage from "./components/pages/projects/tasks";
 import { AuthProvider, useAuth } from "../supabase/auth";
 import { Toaster } from "./components/ui/toaster";
 import { LoadingScreen, LoadingSpinner } from "./components/ui/loading-spinner";
@@ -122,10 +128,58 @@ function AppRoutes() {
           }
         />
         <Route
+          path="/finance/budgets"
+          element={
+            <PrivateRoute>
+              <BudgetsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/finance/reports"
           element={
             <PrivateRoute>
               <ReportsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <PrivateRoute>
+              <ProjectsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/projects/:id"
+          element={
+            <PrivateRoute>
+              <ProjectDetailPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/projects/new"
+          element={
+            <PrivateRoute>
+              <NewProjectPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/projects/:id/edit"
+          element={
+            <PrivateRoute>
+              <EditProjectPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/projects/:id/tasks"
+          element={
+            <PrivateRoute>
+              <ProjectTasksPage />
             </PrivateRoute>
           }
         />

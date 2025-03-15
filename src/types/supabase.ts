@@ -9,6 +9,80 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      budget_expenses: {
+        Row: {
+          amount: number
+          budget_id: string | null
+          created_at: string | null
+          date: string
+          expense_id: string | null
+          id: string
+        }
+        Insert: {
+          amount: number
+          budget_id?: string | null
+          created_at?: string | null
+          date: string
+          expense_id?: string | null
+          id?: string
+        }
+        Update: {
+          amount?: number
+          budget_id?: string | null
+          created_at?: string | null
+          date?: string
+          expense_id?: string | null
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "budget_expenses_budget_id_fkey"
+            columns: ["budget_id"]
+            isOneToOne: false
+            referencedRelation: "budgets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      budgets: {
+        Row: {
+          amount: number
+          category: string | null
+          created_at: string | null
+          end_date: string
+          id: string
+          name: string
+          period: string
+          start_date: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          category?: string | null
+          created_at?: string | null
+          end_date: string
+          id?: string
+          name: string
+          period: string
+          start_date: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          category?: string | null
+          created_at?: string | null
+          end_date?: string
+          id?: string
+          name?: string
+          period?: string
+          start_date?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       users: {
         Row: {
           avatar_url: string | null

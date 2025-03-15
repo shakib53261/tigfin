@@ -124,6 +124,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               Expenses
             </Link>
             <Link
+              to="/finance/budgets"
+              className="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 rounded-md"
+            >
+              Budgets
+            </Link>
+            <Link
               to="/finance/reports"
               className="block py-2 px-3 text-sm text-gray-600 hover:text-orange-600 rounded-md"
             >
