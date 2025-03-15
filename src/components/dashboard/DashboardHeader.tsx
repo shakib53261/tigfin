@@ -1,4 +1,4 @@
-import { Bell, ChevronDown, Menu, Search } from "lucide-react";
+import { ChevronDown, Menu, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "../../../supabase/auth";
+import NotificationCenter from "../notifications/NotificationCenter";
+import { useNotifications } from "../notifications/NotificationProvider";
 
 interface DashboardHeaderProps {
   onMenuClick: () => void;
@@ -18,6 +20,7 @@ interface DashboardHeaderProps {
 
 export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
   const { user, signOut } = useAuth();
+  const { markAsRead, markAllAsRead, handleAction } = useNotifications();
 
   return (
     <header className="bg-white border-b border-gray-200 py-3 px-4 flex items-center justify-between">
@@ -41,10 +44,11 @@ export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
       </div>
 
       <div className="flex items-center gap-3">
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-5 w-5 text-gray-600" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-orange-500 rounded-full"></span>
-        </Button>
+        <NotificationCenter
+          onMarkAsRead={markAsRead}
+          onMarkAllAsRead={markAllAsRead}
+          onAction={handleAction}
+        />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

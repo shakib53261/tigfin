@@ -30,6 +30,7 @@ import DocumentsPage from "./components/pages/hr/documents";
 import { AuthProvider, useAuth } from "../supabase/auth";
 import { Toaster } from "./components/ui/toaster";
 import { LoadingScreen, LoadingSpinner } from "./components/ui/loading-spinner";
+import { NotificationProvider } from "./components/notifications/NotificationProvider";
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -229,6 +230,9 @@ function AppRoutes() {
           }
         />
         <Route path="/success" element={<Success />} />
+
+        {/* Add this before any catchall route */}
+        {import.meta.env.VITE_TEMPO === "true" && <Route path="/tempobook/*" />}
       </Routes>
       {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
     </>
@@ -238,10 +242,12 @@ function AppRoutes() {
 function App() {
   return (
     <AuthProvider>
-      <Suspense fallback={<LoadingScreen text="Loading application..." />}>
-        <AppRoutes />
-      </Suspense>
-      <Toaster />
+      <NotificationProvider>
+        <Suspense fallback={<LoadingScreen text="Loading application..." />}>
+          <AppRoutes />
+        </Suspense>
+        <Toaster />
+      </NotificationProvider>
     </AuthProvider>
   );
 }

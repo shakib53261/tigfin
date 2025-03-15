@@ -83,6 +83,99 @@ export type Database = {
         }
         Relationships: []
       }
+      employees: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          created_at: string | null
+          department: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          notes: string | null
+          phone_number: string | null
+          position: string
+          start_date: string
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string | null
+          department: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          notes?: string | null
+          phone_number?: string | null
+          position: string
+          start_date: string
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string | null
+          department?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          notes?: string | null
+          phone_number?: string | null
+          position?: string
+          start_date?: string
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          action_required: boolean
+          created_at: string
+          description: string
+          id: string
+          read: boolean
+          related_id: string | null
+          related_type: string | null
+          title: string
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          action_required?: boolean
+          created_at?: string
+          description: string
+          id?: string
+          read?: boolean
+          related_id?: string | null
+          related_type?: string | null
+          title: string
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          action_required?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          read?: boolean
+          related_id?: string | null
+          related_type?: string | null
+          title?: string
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       users: {
         Row: {
           avatar_url: string | null
