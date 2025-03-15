@@ -22,6 +22,11 @@ import ProjectDetailPage from "./components/pages/projects/detail";
 import NewProjectPage from "./components/pages/projects/new";
 import EditProjectPage from "./components/pages/projects/edit";
 import ProjectTasksPage from "./components/pages/projects/tasks";
+import HRPage from "./components/pages/hr";
+import EmployeesPage from "./components/pages/hr/employees";
+import TimeOffPage from "./components/pages/hr/time-off";
+import PerformancePage from "./components/pages/hr/performance";
+import DocumentsPage from "./components/pages/hr/documents";
 import { AuthProvider, useAuth } from "../supabase/auth";
 import { Toaster } from "./components/ui/toaster";
 import { LoadingScreen, LoadingSpinner } from "./components/ui/loading-spinner";
@@ -180,6 +185,46 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               <ProjectTasksPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/hr"
+          element={
+            <PrivateRoute>
+              <HRPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/hr/employees"
+          element={
+            <PrivateRoute>
+              <EmployeesPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/hr/time-off"
+          element={
+            <PrivateRoute>
+              <TimeOffPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/hr/performance"
+          element={
+            <PrivateRoute>
+              <PerformancePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/hr/documents"
+          element={
+            <PrivateRoute>
+              <DocumentsPage />
             </PrivateRoute>
           }
         />
